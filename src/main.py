@@ -7,5 +7,7 @@ db = TheDB()
 m_data = meteo_forecast()
 s_data = station_conditions()
 
-db.insert_meteo(m_data)
-db.insert_station(s_data)
+meteo_info = db.insert_meteo(m_data)
+station_info = db.insert_station(s_data)
+
+print(meteo_info, station_info, sep='\n')

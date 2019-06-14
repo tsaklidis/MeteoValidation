@@ -78,7 +78,14 @@ def station_conditions():
     t = rows[3].text.replace('\n', ' ')
     temperature = ','.join(re.findall(r'\d+', t))
 
+    date = rows[2].text.replace('\n', '').strip().split(',')
+
     h = rows[4].text.replace('\n', ' ')
     hum = ','.join(re.findall(r'\d+', h))
 
-    return {'temperature': temperature, 'humidity': hum}
+    return {
+        'temperature': temperature,
+        'humidity': hum,
+        'date': date[2],
+        'time': date[1].strip()
+    }
