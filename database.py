@@ -1,5 +1,6 @@
 import os
 import sqlite3
+import datetime
 
 
 class TheDB:
@@ -47,8 +48,12 @@ class TheDB:
 
     def insert_station(self, station):
             try:
-                self.cur.execute('INSERT INTO station (month, day, time, temperature, humidity) VALUES (?, ?, ?, ?, ?)',
-                                 (station['month'], station['day'], station['time'], station['temperature'], station['humidity']))
+                d = datetime.datetime.now() 
+                month = d.month
+                day = d.day
+                time = str(d.hour) + ':' + str(d.minute)
+                self.cur.execute('INSERT INTO station_data (month, day, time, temperature, humidity) VALUES (?, ?, ?, ?, ?)',
+                                 (month, day, time, station['temperature'], station['humidity']))
                 self.conn.commit()
             except sqlite3.IntegrityError:
                 pass
