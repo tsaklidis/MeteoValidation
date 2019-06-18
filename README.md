@@ -10,6 +10,8 @@
 	Do not trust this script for long term data collection because it is based on web scraping technique. If any of the sites, in the future, change their structure the data collection will fail.  
 </p>
 
+![](screens/sample.png)
+
 <hr>
 
 <h3>Installation and use</h3>
@@ -35,6 +37,7 @@
 TODO and Bugs:
 <ol>
 	<li>Fix data collection for negative temperatures</li>
+	<li>Year to meteo table</li>
 	<li>Decimal separator on DB</li>
 	<li>On station db convert collected date to better format</li>
 	<li>Optimize code</li>
