@@ -76,7 +76,7 @@ class TheDB:
         self.conn
         self.cur = self.conn.cursor()
         self.cur.execute(
-            "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) group by time", (month, day))
+            "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) group by time order by time ", (month, day))
         rows = self.cur.fetchall()
 
         return rows
@@ -88,7 +88,7 @@ class TheDB:
         self.conn
         self.cur = self.conn.cursor()
         self.cur.execute(
-            "SELECT time, temperature FROM station_data WHERE date=? group by time", (date,))
+            "SELECT time, temperature FROM station_data WHERE date=? group by time order by time", (date,))
         rows = self.cur.fetchall()
 
         return rows

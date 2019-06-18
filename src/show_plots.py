@@ -37,7 +37,7 @@ plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
 # print(station)
 
 try:
-    plt.legend(['meteo.gr', 'Davis station'], loc='upper left')
+    plt.legend(['Meteo.gr', 'Davis Station'], loc='upper left')
     plt.show()
 except KeyboardInterrupt:
     exit('Terminated by user')
