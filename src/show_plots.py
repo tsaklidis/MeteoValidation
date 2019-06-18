@@ -38,7 +38,7 @@ for met, st in zip(meteo['temps'], station['temps']):
 
 dev = 'AVG deviation is: {0} *C'.format(round(sum(diffs) / len(diffs), 1))
 
-plt.title('Forecast for: ' + date + '\n' + dev, fontsize=10)
+plt.title('Compare forecast for: ' + date + '\n' + dev, fontsize=10)
 plt.ylabel('Temperature (*C)')
 plt.xlabel('Time')
 plt.grid(True)
