@@ -2,7 +2,7 @@
 
 <p>
 	Sometimes you don't know which weather site to trust. With this script you can calculate how accurate is a site, at this script I use meteo.gr <br>
-	It downloads meteorological data from the meteo.gr and a Davis Weather station wich is placed in the city I would like to know the forecast. After that it will present the percent of success the meteo site had. 
+	The python script, downloads meteorological data from the meteo.gr and a Davis Weather station wich is placed in the city I would like to know the forecast. After that it will present the percent of success the meteo site had. 
 </p>
 
 <p>
@@ -32,8 +32,10 @@
 <p>
 	Or assign the task to a cron job
 </p>
-TODO:
-<ul>
-	<li>Fix negative temperatures</li>
+TODO and Bugs:
+<ol>
+	<li>Fix data collection for negative temperatures</li>
+	<li>Decimal separator on DB</li>
+	<li>On station db convert collected date to better format</li>
 	<li>Optimize code</li>
-</ul>
+</ol>
