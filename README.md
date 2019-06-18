@@ -32,8 +32,14 @@
 ```
 
 <p>
-	Or assign the task to a cron job
+	Or assign the task to a cron job every 3 hours. <br>
+	In order to check the collected data use the show_plots.py script and give a date as an argument
 </p>
+
+```python
+:~$ python3 show_plots.py 2019-06-18
+```
+
 TODO and Bugs:
 <ol>
 	<li>Fix data collection for negative temperatures</li>

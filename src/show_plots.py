@@ -1,11 +1,20 @@
 import sys
 import matplotlib.pyplot as plt
 
+import datetime
+import time
+
+
 from database import TheDB
+
+
 try:
     date = sys.argv[1]
 except IndexError:
-    exit('Provide a date in format YYYY-MM-DD')
+    print('Provide a date in format YYYY-MM-DD')
+    t = time.time()
+    date = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d')
+    print('Auto date set: ', date)
 
 db = TheDB()
 # [('00:00', 21.0), ('03:00', 19.0), ('06:00', 17.0), ('09:00', 23.0), ('12:00', 28.0), ('15:00', 30.0), ('18:00', 29.0), ('21:00', 24.0)] # noqa
