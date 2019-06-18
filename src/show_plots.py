@@ -9,10 +9,10 @@ from database import TheDB
 try:
     date = sys.argv[1]
 except IndexError:
-    print('Provide a date in format YYYY-MM-DD')
     t = time.time()
     date = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d')
-    print('Auto date set: ', date)
+    # print('Provide a date in format YYYY-MM-DD')
+    # print('Auto date set: ', date)
 
 db = TheDB()
 
@@ -35,8 +35,11 @@ for s in station_rows:
 diffs = []
 for met, st in zip(meteo['temps'], station['temps']):
     diffs.append(round(abs(met - st), 2))
-
-dev = 'AVG deviation is: {0} *C'.format(round(sum(diffs) / len(diffs), 1))
+try:
+    dev = 'AVG deviation is: {0} (*C)'.format(
+        round(sum(diffs) / len(diffs), 1))
+except ZeroDivisionError:
+    dev = 'AVG deviation is: 0 (*C)'
 
 plt.title('Compare forecast for: ' + date + '\n' + dev, fontsize=10)
 plt.ylabel('Temperature (*C)')
