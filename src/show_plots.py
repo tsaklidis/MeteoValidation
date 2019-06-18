@@ -1,9 +1,7 @@
-import sys
-import matplotlib.pyplot as plt
-
 import datetime
+import matplotlib.pyplot as plt
 import time
-
+import sys
 
 from database import TheDB
 
@@ -17,7 +15,7 @@ except IndexError:
     print('Auto date set: ', date)
 
 db = TheDB()
-# [('00:00', 21.0), ('03:00', 19.0), ('06:00', 17.0), ('09:00', 23.0), ('12:00', 28.0), ('15:00', 30.0), ('18:00', 29.0), ('21:00', 24.0)] # noqa
+
 
 meteo_rows = db.select_meteo(date)
 station_rows = db.select_station(date)
@@ -33,20 +31,18 @@ for s in station_rows:
     station['dates'].append(s[0])
     station['temps'].append(s[1])
 
-plt.title('Meteo.gr VS Davis Station\nForecast for: ' + date)
 
+diffs = []
+for met, st in zip(meteo['temps'], station['temps']):
+    diffs.append(round(abs(met - st), 2))
+
+dev = 'AVG deviation is: {0} *C'.format(round(sum(diffs) / len(diffs), 1))
+
+plt.title('Forecast for: ' + date + '\n' + dev, fontsize=10)
 plt.ylabel('Temperature (*C)')
 plt.xlabel('Time')
 plt.grid(True)
-
-
 plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
+plt.legend(['Meteo.gr', 'Davis Station'], loc='best', fontsize=10)
 
-# print(meteo)
-# print(station)
-
-try:
-    plt.legend(['Meteo.gr', 'Davis Station'], loc='upper left')
-    plt.show()
-except KeyboardInterrupt:
-    exit('Terminated by user')
+plt.show()
