@@ -55,7 +55,7 @@ def meteo_forecast():
             if head_date:
                 all_data = head_date.text.split(' ')
 
-                week_day = all_data[0]
+                # week_day = all_data[0]
                 day = re.findall(r'\d+', all_data[1])[0]
                 month = re.findall("[Α-Ω]+", all_data[1])[0]
 
@@ -76,12 +76,12 @@ def station_conditions():
     rows = trapezi.findChildren(['tr'])
 
     t = rows[3].text.replace('\n', ' ')
-    temperature = ','.join(re.findall(r'\d+', t))
+    temperature = float('.'.join(re.findall(r'\d+', t)))
 
     date = rows[2].text.replace('\n', '').strip().split(',')
 
     h = rows[4].text.replace('\n', ' ')
-    hum = ','.join(re.findall(r'\d+', h))
+    hum = float('.'.join(re.findall(r'\d+', h)))
 
     return {
         'temperature': temperature,

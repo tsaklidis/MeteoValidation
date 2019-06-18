@@ -71,5 +71,37 @@ class TheDB:
 
         return record
 
+    def select_meteo(self, date):
+        year, month, day = date.split('-')
+        self.conn
+        self.cur = self.conn.cursor()
+        self.cur.execute(
+            "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) group by time", (month, day))
+        rows = self.cur.fetchall()
+
+        return rows
+
+    def select_station(self, date):
+        year, month, day = date.split('-')
+        date = day + '/' + month + '/' + year[2:]
+
+        self.conn
+        self.cur = self.conn.cursor()
+        self.cur.execute(
+            "SELECT time, temperature FROM station_data WHERE date=? group by time", (date,))
+        rows = self.cur.fetchall()
+
+        return rows
+
+    # def select_from_station(self, date):
+    #     year, month, day = date.split('-')
+    #     self.conn
+    #     self.cur = self.conn.cursor()
+    #     self.cur.execute(
+    #         "SELECT time, temperature FROM station_data WHERE (month=? AND day=?)", (month, day))
+    #     rows = self.cur.fetchall()
+
+        return rows
+
     def __del__(self):
         self.conn.close()
