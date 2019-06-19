@@ -52,6 +52,11 @@ except ZeroDivisionError:
     dev = 'AVG deviation is: 0 (*C)'
 
 # Create the plot
+# Also add data to plot
+# plt.plot(x, y1)
+# plt.plot(x, y2)
+# plt.plot(x, yn)
+
 plt.title('Compare forecast for: ' + date + '\n' + dev, fontsize=10)
 plt.ylabel('Temperature (*C)')
 plt.xlabel('Time')
