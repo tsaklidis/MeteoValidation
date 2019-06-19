@@ -84,6 +84,8 @@ def scrape_station():
     hum = float('.'.join(re.findall(r'\d+', h)))
     date[1] = date[1].strip()
 
+    # Station gives time with format '3:00'
+    # Fix the format for meteo.gr
     if len(date[1]) == 4:
         date[1] = '0' + date[1]
 

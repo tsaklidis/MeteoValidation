@@ -93,15 +93,5 @@ class TheDB:
 
         return rows
 
-    # def select_from_station(self, date):
-    #     year, month, day = date.split('-')
-    #     self.conn
-    #     self.cur = self.conn.cursor()
-    #     self.cur.execute(
-    #         "SELECT time, temperature FROM station_data WHERE (month=? AND day=?)", (month, day))
-    #     rows = self.cur.fetchall()
-
-        return rows
-
     def __del__(self):
         self.conn.close()

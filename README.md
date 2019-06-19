@@ -33,7 +33,7 @@ python3 src/main.py
 
 <p>
 	Assign the task to a cron job every 3 hours. (meteo.gr has forecast every 3 hours) <br>
-	In order to check the collected data use the show_plots.py script. Give a date as an argument for older days. No date shows today forecast.
+	In order to check the collected data use the show_plots.py script. Give a date as an argument for older days. No date argument shows today forecast.
 </p>
 
 ```shell
