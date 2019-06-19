@@ -82,13 +82,14 @@ def station_conditions():
 
     h = rows[4].text.replace('\n', ' ')
     hum = float('.'.join(re.findall(r'\d+', h)))
+    date[1] = date[1].strip()
 
-    if len(date[1].strip()) == 4:
+    if len(date[1]) == 4:
         date[1] = '0' + date[1]
 
     return {
         'temperature': temperature,
         'humidity': hum,
         'date': date[2],
-        'time': date[1].strip()
+        'time': date[1]
     }
