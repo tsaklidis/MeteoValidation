@@ -8,9 +8,11 @@ from database import TheDB
 
 try:
     date = sys.argv[1]
+    show = sys.argv[2]
 except IndexError:
     t = time.time()
     date = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d')
+    show = False
     # print('Provide a date in format YYYY-MM-DD')
     # print('Auto date set: ', date)
 
@@ -51,4 +53,10 @@ plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
 plt.legend(['Meteo.gr', 'Davis Station'], loc='best', fontsize=10)
 
 
-plt.show()
+if show:
+    t = time.time()
+    stamp = datetime.datetime.fromtimestamp(t).strftime('%Y%m%d_%H:%M:%S')
+
+    plt.savefig(str(stamp) + '.png')
+else:
+    plt.show()
