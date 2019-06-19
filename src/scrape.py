@@ -23,7 +23,7 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Connection': 'keep-alive'}
 
 
-def meteo_forecast():
+def scrape_meteo():
     meteo_rsp = requests.get(meteo, headers=hdr)
 
     soup = BeautifulSoup(meteo_rsp.text, 'html.parser')
@@ -69,7 +69,7 @@ def meteo_forecast():
     return forecast
 
 
-def station_conditions():
+def scrape_station():
     st = requests.get(station)
     soup = BeautifulSoup(st.text, 'html.parser')
     trapezi = soup.find("table")
