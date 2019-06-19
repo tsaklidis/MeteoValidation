@@ -19,16 +19,16 @@
 	In order to use the script, you have to use python3 and install the requirements. Some info about data download is saved to a file called info.log
 </p>
 
-```python
-:~$ pip3 install -r requirements.txt
+```shell
+pip3 install -r requirements.txt
 ```
 
 <p>
 	After install run the script once:
 </p>
 
-```python
-:~$ python3 src/main.py
+```shell
+python3 src/main.py
 ```
 
 <p>
@@ -36,8 +36,8 @@
 	In order to check the collected data use the show_plots.py script and give a date as an argument
 </p>
 
-```python
-:~$ python3 show_plots.py 2019-06-18
+```shell
+python3 show_plots.py 2019-06-18
 ```
 
 
@@ -45,8 +45,8 @@
 	If you want to export the plot to an image file add an extra argument, for example 'save'
 </p>
 
-```python
-:~$ python3 show_plots.py 2019-06-18 save
+```shell
+python3 show_plots.py 2019-06-18 save
 ```
 
 
