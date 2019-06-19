@@ -7,11 +7,14 @@ from database import TheDB
 
 
 try:
-    date = sys.argv[1] # Different day than today
-    show = sys.argv[2] # Any text saves the plot to image 
+    date = sys.argv[1]  # Different day than today
 except IndexError:
     t = time.time()
     date = datetime.datetime.fromtimestamp(t).strftime('%Y-%m-%d')
+
+try:
+    show = sys.argv[2]  # Any text saves the plot to image
+except IndexError:
     show = False
 
 db = TheDB()
