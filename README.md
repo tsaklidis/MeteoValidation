@@ -24,7 +24,7 @@
 ```
 
 <p>
-	After install just run the script once:
+	After install run the script once:
 </p>
 
 ```python
@@ -32,7 +32,7 @@
 ```
 
 <p>
-	Or assign the task to a cron job every 3 hours. <br>
+	Assign the task to a cron job every 3 hours. <br>
 	In order to check the collected data use the show_plots.py script and give a date as an argument
 </p>
 
@@ -40,11 +40,20 @@
 :~$ python3 show_plots.py 2019-06-18
 ```
 
+
+<p>
+	If you want to export the plot to an image file add an extra argument, for example 'save'
+</p>
+
+```python
+:~$ python3 show_plots.py 2019-06-18 save
+```
+
+
 TODO and Bugs:
 <ol>
 	<li>Fix data collection for negative temperatures</li>
 	<li>Year to meteo table</li>
-	<li>Decimal separator on DB</li>
 	<li>On station db convert collected date to better format</li>
 	<li>Optimize code</li>
 </ol>
