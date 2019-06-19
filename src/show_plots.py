@@ -20,7 +20,7 @@ except IndexError:
 db = TheDB()
 
 # Get the raw data from db
-meteo_rows = db.select_meteo(date)
+meteo_rows = db.select_meteo(date, False)
 station_rows = db.select_station(date)
 
 meteo = {'temps': [], 'dates': []}
@@ -40,8 +40,8 @@ diffs = []
 for met, st in zip(meteo['temps'], station['temps']):
     # If station and meteo dates do not match, deviation is wrong.
     # Example:
-    ## meteo = {'temps': [18, 17], 'dates': ['12:00', '18:00']}
-    ## station = {'temps': [18, 25, 17], 'dates': ['12:00', '15:00', '18:00']}
+    # meteo = {'temps': [18, 17], 'dates': ['12:00', '18:00']}
+    # station = {'temps': [18, 25, 17], 'dates': ['12:00', '15:00', '18:00']}
     diffs.append(round(abs(met - st), 2))
 
 # Create deviation info
@@ -61,6 +61,11 @@ plt.title('Compare forecast for: ' + date + '\n' + dev, fontsize=10)
 plt.ylabel('Temperature (*C)')
 plt.xlabel('Time')
 plt.grid(True)
+
+# Do not show time but all samples
+# plt.plot(meteo['temps'])
+# plt.plot(station['temps'])
+
 plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
 plt.legend(['Meteo.gr', 'Davis Station'], loc='best', fontsize=10)
 

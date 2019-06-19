@@ -71,12 +71,16 @@ class TheDB:
 
         return record
 
-    def select_meteo(self, date):
+    def select_meteo(self, date, double=None):
         year, month, day = date.split('-')
         self.conn
         self.cur = self.conn.cursor()
-        self.cur.execute(
-            "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) group by time order by time ", (month, day))
+        if double:
+            self.cur.execute(
+                "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) order by time ", (month, day))
+        else:
+            self.cur.execute(
+                "SELECT time, temperature FROM meteo_data WHERE (month=? AND day=?) group by time order by time ", (month, day))
         rows = self.cur.fetchall()
 
         return rows

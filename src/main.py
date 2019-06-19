@@ -14,20 +14,20 @@ times = ['0:00', '3:00', '6:00', '9:00', '00:00', '03:00', '06:00', '09:00',
 m_data = scrape_meteo()
 s_data = scrape_station()
 
-mins = 0 # Delay
+mins = 0  # Delay
 while (s_data['time'] not in times):
     print(s_data['time'], ' Not in times, waiting')
     time.sleep(60)
     s_data = scrape_station()
     mins = mins + 1
-    if mins > 10: # Get data for 11 mins, if not in times, save what was given
+    if mins > 10:  # Get data for 11 mins, if not in times, save what was given
         break
 # Save any collected data
 meteo_info = db.insert_meteo(m_data)
 station_info = db.insert_station(s_data)
 
 # Print some info.
-# if cron is used any print() is saved to a file 
+# if cron is used any print() is saved to a file
 t = time.time()
 stamp = datetime.datetime.fromtimestamp(t).strftime('%Y/%m/%d %H:%M:%S')
 
