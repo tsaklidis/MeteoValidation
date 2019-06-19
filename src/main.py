@@ -6,7 +6,7 @@ from scrape import meteo_forecast, station_conditions
 
 
 db = TheDB()
-times = ['0:00', '3:00', '6:00', '9:00', '00:00', '03:00', '06:00', '09:00', 
+times = ['0:00', '3:00', '6:00', '9:00', '00:00', '03:00', '06:00', '09:00',
          '12:00', '15:00', '18:00', '21:00']
 
 m_data = meteo_forecast()
@@ -14,7 +14,7 @@ s_data = station_conditions()
 
 
 while (s_data['time'] not in times):
-    print('Not in times, waiting my time')
+    print(s_data['time'], ' Not in times, waiting my time')
     time.sleep(60)
     s_data = station_conditions()
 

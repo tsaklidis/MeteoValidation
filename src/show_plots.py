@@ -35,6 +35,8 @@ for s in station_rows:
 diffs = []
 for met, st in zip(meteo['temps'], station['temps']):
     diffs.append(round(abs(met - st), 2))
+
+
 try:
     dev = 'AVG deviation is: {0} (*C)'.format(
         round(sum(diffs) / len(diffs), 1))
@@ -47,5 +49,6 @@ plt.xlabel('Time')
 plt.grid(True)
 plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
 plt.legend(['Meteo.gr', 'Davis Station'], loc='best', fontsize=10)
+
 
 plt.show()
