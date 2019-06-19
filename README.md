@@ -24,7 +24,7 @@ pip3 install -r requirements.txt
 ```
 
 <p>
-	After install run the script once:
+	After installing the requirements run the script as a typical python3:
 </p>
 
 ```shell
@@ -32,8 +32,8 @@ python3 src/main.py
 ```
 
 <p>
-	Assign the task to a cron job every 3 hours. <br>
-	In order to check the collected data use the show_plots.py script and give a date as an argument
+	Assign the task to a cron job every 3 hours. (meteo.gr has forecast every 3 hours) <br>
+	In order to check the collected data use the show_plots.py script. Give a date as an argument for older days. No date shows today forecast.
 </p>
 
 ```shell
