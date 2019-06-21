@@ -20,7 +20,7 @@ except IndexError:
 db = TheDB()
 
 # Get the raw data from db
-meteo_rows = db.select_meteo(date, False)
+meteo_rows = db.select_meteo(date, 1)
 station_rows = db.select_station(date)
 
 meteo = {'temps': [], 'dates': []}
@@ -46,10 +46,11 @@ for met, st in zip(meteo['temps'], station['temps']):
 
 # Create deviation info
 try:
-    dev = 'AVG deviation is: +/-{0} (*C)'.format(
-        round(sum(diffs) / len(diffs), 1))
+    avg_dev = 'AVG deviation +/- {0}*C\n'.format(round(sum(diffs) / len(diffs), 1))
+    max_dev = 'MAX deviation +/- {0}*C\n'.format(max(diffs))
+    min_dev = 'MIN deviation +/- {0}*C'.format(min(diffs))
 except ZeroDivisionError:
-    dev = 'AVG deviation is: 0 (*C)'
+    avg_dev = 'AVG deviation is: 0 (*C)'
 
 # Create the plot
 # Also add data to plot
@@ -57,7 +58,8 @@ except ZeroDivisionError:
 # plt.plot(x, y2)
 # plt.plot(x, yn)
 
-plt.title('Compare forecast for: ' + date + '\n' + dev, fontsize=10)
+# plt.title('Compare forecast for: ' + date + '\n' + avg_dev + max_dev + min_dev, fontsize=10)
+plt.title('Compare forecast for: ' + date + '\n' + avg_dev, fontsize=9)
 plt.ylabel('Temperature (*C)')
 plt.xlabel('Time')
 plt.grid(True)
@@ -66,7 +68,7 @@ plt.grid(True)
 # plt.plot(meteo['temps'])
 # plt.plot(station['temps'])
 
-plt.plot(meteo['dates'], meteo['temps'], station['dates'], station['temps'])
+plt.plot(meteo['dates'], meteo['temps'], 'ro', station['dates'], station['temps'])
 plt.legend(['Meteo.gr', 'Davis Station'], loc='best', fontsize=10)
 
 # Display or save the plot
