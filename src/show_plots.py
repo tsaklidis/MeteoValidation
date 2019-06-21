@@ -20,7 +20,7 @@ except IndexError:
 db = TheDB()
 
 # Get the raw data from db
-meteo_rows = db.select_meteo(date, 1)
+meteo_rows = db.select_meteo(date, True)
 station_rows = db.select_station(date)
 
 meteo = {'temps': [], 'dates': []}

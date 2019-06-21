@@ -12,6 +12,13 @@
 
 ![](screens/sample.png)
 
+<p>
+	Sometimes meteo.gr gives multiple forecasts for the same hour. You can plot all the forecast by givint the True argument to db_object.select_meteo(date, True)
+</p>
+
+
+![](screens/sample2.png)
+
 <hr>
 
 <h3>Installation and use</h3>
