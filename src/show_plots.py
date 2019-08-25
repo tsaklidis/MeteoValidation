@@ -20,7 +20,7 @@ except IndexError:
 db = TheDB()
 
 # Get the raw data from db
-meteo_rows = db.select_meteo(date, True)
+meteo_rows = db.select_meteo(date, True) # Set this to false in order to get the last forecast
 station_rows = db.select_station(date)
 
 meteo = {'temps': [], 'dates': []}
