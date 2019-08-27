@@ -57,6 +57,14 @@ python3 show_plots.py 2019-06-18 save
 ```
 
 
+<p>
+	db_instance.select_meteo(date, True or False)  Seting this to false you will get only the last forecast. (One dot)
+</p>
+
+```shell
+db.select_meteo(date, True)
+```
+
 TODO and Bugs:
 <ol>
 	<li>Fix data collection for negative temperatures</li>
